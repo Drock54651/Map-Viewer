@@ -26,9 +26,9 @@ class App(ctk.CTk):
 
         #* WIDGETS
         self.map_widget = MapWidget(self, self.input_string, self.submit_location)
-        self.side_panel = SidePanel(self)
+        self.side_panel = SidePanel(self, self.map_widget.set_style)
 
-        
+
         #* RUN
         self.mainloop()
 
@@ -64,13 +64,29 @@ class MapWidget(tkintermapview.TkinterMapView):
         #* STYLE CHANGE
         #TODO: looks at TkinterMapView documentation https://github.com/TomSchimansky/TkinterMapView
         #TODO: use the documentation to update the map style to the terrain view
-        self.set_tile_server(TERRAIN_URL)  # google satellite
+        
 
         #* ENTRY FOR LOCATION
         self.location_entry = LocationEntry(self, input_string, submit_location)
+    
+    def set_style(self, view_style):
+        #* STYLE CHANGE
+        #TODO: looks at TkinterMapView documentation https://github.com/TomSchimansky/TkinterMapView
+        #TODO: use the documentation to update the map style to the terrain view
+        #TODO: create an if statement and select the right style
+        #TODO: figure out how to get this method into the buttons class in sidepanel.py
 
+        if view_style == 'map':
+            self.set_tile_server(MAIN_URL)
+            
+        if view_style == 'terrain':
+            self.set_tile_server(TERRAIN_URL)  # google satellite
+        
 
+        if view_style == 'paint':
+            self.set_tile_server(PAINT_URL)
 
+            
 class LocationEntry(ctk.CTkEntry):
     def __init__(self, parent, input_string, submit_location):
         self.color_index = 15 #! for the color range in settings
