@@ -61,18 +61,16 @@ class MapWidget(tkintermapview.TkinterMapView):
         super().__init__(master  = parent)
         self.grid(row = 0, column = 1, sticky = 'news')
 
-        #* STYLE CHANGE
         #TODO: looks at TkinterMapView documentation https://github.com/TomSchimansky/TkinterMapView
         #TODO: use the documentation to update the map style to the terrain view
-        
+        # self.set_tile_server(TERRAIN_URL)
 
         #* ENTRY FOR LOCATION
         self.location_entry = LocationEntry(self, input_string, submit_location)
     
     def set_style(self, view_style):
+        
         #* STYLE CHANGE
-        #TODO: looks at TkinterMapView documentation https://github.com/TomSchimansky/TkinterMapView
-        #TODO: use the documentation to update the map style to the terrain view
         #TODO: create an if statement and select the right style
         #TODO: figure out how to get this method into the buttons class in sidepanel.py
 

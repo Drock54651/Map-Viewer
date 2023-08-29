@@ -29,3 +29,5 @@ class ViewButtons(ctk.CTkFrame):
         ctk.CTkButton(self, command = lambda: set_style('map'), width = 60, text  = '', image = map_image, fg_color = BUTTON_COLOR, hover_color = BUTTON_HOVER_COLOR).grid(row = 0, column = 0, sticky = 'w')
         ctk.CTkButton(self, command = lambda: set_style('terrain'), width = 60, text  = '', image = terrain_image, fg_color = BUTTON_COLOR, hover_color = BUTTON_HOVER_COLOR).grid(row = 0, column = 1)
         ctk.CTkButton(self, command = lambda: set_style('paint'), width = 60, text  = '', image = paint_image, fg_color = BUTTON_COLOR, hover_color = BUTTON_HOVER_COLOR).grid(row = 0, column = 2, sticky = 'e')
+                                         #! lamda needed so function called only when button pressed
+                                         #! without lambda, it would essentially just call the func automatically
