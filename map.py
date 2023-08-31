@@ -2,7 +2,7 @@ import customtkinter as ctk
 from settings import *
 import tkintermapview
 from geopy.geocoders import Nominatim #!
-from sidepanel import SidePanel
+from sidePanel import SidePanel
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
@@ -38,11 +38,9 @@ class App(ctk.CTk):
     def submit_location(self, event):
 
         #* GET DATA
-        geolocator = Nominatim(user_agent = 'my-user') #! user agent can be whatever, usually for who
-        location = geolocator.geocode(self.input_string.get(), language = 'en') #! finds best match for the inputed location and gives full address
-                                                                                #! Technically 2 versions .geocode and .reverse
-                                                                                #! .geocode takes in an address and finds coordinates hence why map can find the place 
-                                                                                #! .reverse takes in coordinates and outputs the address
+        geolocator = Nominatim(user_agent = 'my-user') 
+        location = geolocator.geocode(self.input_string.get(), language = 'en') 
+                                                                              
        
         #* UPDATE MAP
         if location:
@@ -53,9 +51,9 @@ class App(ctk.CTk):
             #* CLEAR INPUT
             self.input_string.set('')
 
-        #TODO: if input is invalid print 'invalid'
+       
         else:
-            #print('invalid')
+           
             self.map_widget.location_entry.error_animation()
 
 class MapWidget(tkintermapview.TkinterMapView):
@@ -63,19 +61,14 @@ class MapWidget(tkintermapview.TkinterMapView):
         super().__init__(master  = parent)
         self.grid(row = 0, column = 1, sticky = 'news')
 
-        #TODO: looks at TkinterMapView documentation https://github.com/TomSchimansky/TkinterMapView
-        #TODO: use the documentation to update the map style to the terrain view
-        # self.set_tile_server(TERRAIN_URL)
-
+        
         #* ENTRY FOR LOCATION
         self.location_entry = LocationEntry(self, input_string, submit_location)
     
     def set_style(self, view_style):
         
         #* STYLE CHANGE
-        #TODO: create an if statement and select the right style
-        #TODO: figure out how to get this method into the buttons class in sidepanel.py
-
+        
         if view_style == 'map':
             self.set_tile_server(MAIN_URL)
             
@@ -115,10 +108,10 @@ class LocationEntry(ctk.CTkEntry):
             self.color_index -= 1
             
             
-            border_color = f'#F{COLOR_RANGE[self.color_index]}{COLOR_RANGE[self.color_index]}' #! going from index 15 to 14 to 13, etc
+            border_color = f'#F{COLOR_RANGE[self.color_index]}{COLOR_RANGE[self.color_index]}' 
 
-            #TODO: change text color from black to red
-            text_color = f'#{COLOR_RANGE[-self.color_index - 1]}00' #! going from -16 to -15 to -14, etc
+            
+            text_color = f'#{COLOR_RANGE[-self.color_index - 1]}00' 
 
             self.configure(border_color = border_color, text_color = text_color)
 
