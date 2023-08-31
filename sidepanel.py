@@ -40,7 +40,7 @@ class HistoryFrame(ctk.CTkScrollableFrame):
         self.pack(expand = True, fill = 'both', padx = 5, pady = 5)
         self.font  = ctk.CTkFont(family =TEXT_FONT, size= TEXT_SIZE)
         self.update_map = update_map
-        #TODO figure out how to call the method when the user entered data
+        
         
 
     def add_location_entry(self, location):
@@ -60,7 +60,7 @@ class HistoryItem(ctk.CTkFrame):
         
         else:
             address_string = f'{town}, {country}'
-            
+
 
 
         #* WIDGETS
