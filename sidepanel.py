@@ -60,6 +60,7 @@ class HistoryItem(ctk.CTkFrame):
         
         else:
             address_string = f'{town}, {country}'
+            
 
 
         #* WIDGETS
